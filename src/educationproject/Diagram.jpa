@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" ptype="MONOLITH" ppkg="educationproject" epkg="entities" v="4.9" rws="_15440158062744" Pws="_15440158062744" cws="_15440158062744" thm="PMacColorScheme" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_15440158062743" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity compositePrimaryKeyClass="StudentPK" abs="false" class="Student" v="true" jbn="false" xre="false" m="false" rootElement="_15440158062743" id="_15440158121835">
+        <jpa:ath>Jakob</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_15440158541019">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.time.LocalDate" v="true" xvt="" name="birthDate" id="_154401586924210">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_154401608662515" connected-attribute-id="_154401624126925" v="true" xvt="" name="program" id="_154401624126824">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_154401630261232" connected-attribute-id="_1544085266366213" v="true" xvt="" name="grades" id="_1544085266367214">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="long" v="true" xvt="" name="id" id="_15440158122026">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Student.findAll">
+            <jpa:query>Select e from Student e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Student.findByName">
+            <jpa:query>Select s from Student s where s.name=:name</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Student.findByBirthDate">
+            <jpa:query>Select s from Student s where s.birthDate=:birthDate</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CoursePK" abs="false" class="Course" v="true" jbn="false" xre="false" m="false" rootElement="_15440158062743" id="_154401605671611">
+        <jpa:ath>Jakob</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_154401607207514">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_154401662661445" connected-attribute-id="_1544017870742107" v="true" xvt="" name="teacher" id="_1544017870740106">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_154401605671612">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Course.findAll">
+            <jpa:query>Select e from Course e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Course.findByName">
+            <jpa:query>Select c from Course c where c.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ProgramPK" abs="false" class="Program" v="true" jbn="false" xre="false" m="false" rootElement="_15440158062743" id="_154401608662515">
+        <jpa:ath>Jakob</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_154401612312918">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_15440158121835" connected-attribute-id="_154401624126824" v="true" xvt="" name="students" id="_154401624126925">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:one-to-many>
+            <jpa:one-to-many own="true" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_154401605671611" v="true" name="courses" id="_1544086215666268"/>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_154401608662616">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Program.findAll">
+            <jpa:query>Select e from Program e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Program.findByName">
+            <jpa:query>Select p from Program p where p.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyType="D" compositePrimaryKeyClass="GradePK" abs="false" class="Grade" v="true" jbn="false" xre="false" m="false" rootElement="_15440158062743" id="_154401630261232">
+        <jpa:ath>Jakob</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="level" id="_154401631503235">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="true" connected-entity-id="_15440158121835" connected-attribute-id="_1544085266367214" v="true" xvt="" name="student" id="_1544085266366213">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="true" primaryKey="true" connected-entity-id="_154401605671611" v="true" xvt="" name="course" id="_1544085330226218">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:nq e="false" name="level.findAll">
+            <jpa:query>Select e from level e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Grade.findByLevel">
+            <jpa:query>Select e from level e where e.level=:level</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TeacherPK" abs="false" class="Teacher" v="true" jbn="false" xre="false" m="false" rootElement="_15440158062743" id="_154401662661445">
+        <jpa:ath>Jakob</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_154401663451348">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:basic>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_154401605671611" connected-attribute-id="_1544017870740106" v="true" xvt="" name="courses" id="_1544017870742107">
+                <jpa:xwm/>
+                <jpa:xm/>
+            </jpa:one-to-many>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_154401662661746">
+                <jpa:xwm/>
+                <jpa:xm/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Teacher.findAll">
+            <jpa:query>Select e from Teacher e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Teacher.findByName">
+            <jpa:query>Select t from Teacher t where t.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+ * This file was generated by the Jeddict
+ */</jpa:snp>
+    <jpa:c>
+        <ct>java.util.List</ct>
+        <ct>java.util.Set</ct>
+        <ct>java.util.Map</ct>
+        <ct>java.util.Collection</ct>
+        <cit>java.util.ArrayList</cit>
+        <cit>java.util.LinkedList</cit>
+        <cit>java.util.HashSet</cit>
+        <cit>java.util.TreeSet</cit>
+        <cit>java.util.HashMap</cit>
+    </jpa:c>
+    <jpa:wsl>
+        <jpa:ws n="Main" id="_15440158062744">
+            <i ref="_154401630261232" x="516" y="429"/>
+            <i ref="_154401605671611" x="892" y="165"/>
+            <i ref="_15440158121835" x="147" y="188"/>
+            <i ref="_154401608662515" x="545" y="209"/>
+            <i ref="_154401662661445" x="531" y="39"/>
+        </jpa:ws>
+    </jpa:wsl>
+</jpa:entity-mappings>
