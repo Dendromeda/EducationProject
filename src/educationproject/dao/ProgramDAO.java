@@ -38,6 +38,14 @@ public class ProgramDAO {
         em.close();
     }
     
+        public void merge(Program program){
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+            em.merge(program);
+        em.getTransaction().commit();
+        em.close();
+    }
+    
     public void persist(Program program){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();

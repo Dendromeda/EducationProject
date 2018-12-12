@@ -38,6 +38,14 @@ public class CourseDAO {
         em.close();
     }
     
+    public void merge(Course course){
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+            em.merge(course);
+        em.getTransaction().commit();
+        em.close();
+    }
+    
     public void persist(Course course){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();

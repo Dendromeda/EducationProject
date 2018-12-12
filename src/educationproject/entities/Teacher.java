@@ -75,4 +75,8 @@ public class Teacher {
         course.setTeacher(null);
     }
 
+    public String toString(){
+        return String.format("[%3d] %s", id, name);
+    }
+    
 }

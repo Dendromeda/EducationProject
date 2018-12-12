@@ -16,18 +16,19 @@ import java.util.List;
 public class Main {
     
     public static void main(String[] args){
+        
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("EducationProjectPU");
-        StudentDAO sdao = new StudentDAO(emf);
-        List<Student> list = sdao.findByBirthdate(LocalDate.of(1990,1,1), LocalDate.of(1995,6,1));
-        for (Student student : list) {
-            System.out.println(student);
-        }
+        MenuBuilder.initDAO(emf);
+        
+        Menu mainMenu = MenuBuilder.createMainMenu();
+        mainMenu.execute();
+    }
+        
 //        
 
         
         
-        
-    }
+ 
     
     public static void initDb(EntityManagerFactory emf){
         EntityManager em = emf.createEntityManager();

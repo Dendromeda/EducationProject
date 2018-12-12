@@ -1,30 +1,28 @@
 package educationproject.dao;
 
 import javax.persistence.EntityManagerFactory;
-import educationproject.entities.Student;
-import java.sql.Date;
-import java.time.LocalDate;
+import educationproject.entities.Teacher;
 import java.util.List;
 import javax.persistence.EntityManager;
 
-public class StudentDAO {
+public class TeacherDAO {
     
     private EntityManagerFactory emf;
     
-    public StudentDAO(EntityManagerFactory emf){
+    public TeacherDAO(EntityManagerFactory emf){
         this.emf = emf;
     }
     
-    public Student findById(int id){
+    public Teacher findById(int id){
         EntityManager em = emf.createEntityManager();
-        Student c = em.find(Student.class, id);
+        Teacher c = em.find(Teacher.class, id);
         em.close();
         return c;
     }
     
-    public List<Student> findByName(String string){
+    public List<Teacher> findByName(String string){
         EntityManager em = emf.createEntityManager();
-        List<Student> list = em.createQuery("Select s from Student s WHERE s.name LIKE :name")
+        List<Teacher> list = em.createQuery("Select c from Teacher c WHERE c.name LIKE :name")
                 //.setParameter("name", String.format("%%s%", string))
                 .setParameter("name", "%"+string+"%")
                 .getResultList();
@@ -32,36 +30,29 @@ public class StudentDAO {
         return list;
     }
     
-    public List<Student> findByBirthdate(LocalDate from, LocalDate to){
-        EntityManager em = emf.createEntityManager();
-        List<Student> list = em.createQuery("Select s from Student s WHERE s.birthDate BETWEEN :from AND :to ")
-                .setParameter("from", Date.valueOf(from))
-                .setParameter("to", Date.valueOf(to))
-                .getResultList();
-        em.close();
-        return list;
-    }
-    
-    public void delete(Student student){
+    public void delete(Teacher teacher){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-            em.remove(em.merge(student));
+            if (em.contains(teacher))
+                em.merge(teacher);
+            else
+                em.persist(teacher);
         em.getTransaction().commit();
         em.close();
     }
     
-        public void merge(Student student){
+        public void merge(Teacher teacher){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-            em.merge(student);
+            em.merge(teacher);
         em.getTransaction().commit();
         em.close();
     }
     
-    public void persist(Student student){
+    public void persist(Teacher teacher){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-            em.persist(student);
+            em.persist(teacher);
         em.getTransaction().commit();
         em.close();
     }

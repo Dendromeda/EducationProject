@@ -61,5 +61,9 @@ public class Course {
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
+    
+    public String toString(){
+        return String.format("[%3d] %15s (%s)", id, name, teacher.getName());
+    }
 
 }

@@ -101,6 +101,10 @@ public class Program {
         getCourses().remove(course);
     }
     
+    public String toString(){
+        return String.format("[%3d] %s", id, name);
+    }
+    
     public String getInfo(){
         StringBuilder sb = new StringBuilder("Program: ");
         sb.append(String.format("[%d] %s\n\n", id, name))

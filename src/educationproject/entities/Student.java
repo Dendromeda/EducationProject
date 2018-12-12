@@ -100,6 +100,11 @@ public class Student {
         getGrades().add(grade);
         grade.setStudent(this);
     }
+    
+    public void addGrade(String level, Course course) {
+        Grade grade = new Grade(this, course, level);
+        getGrades().add(grade);
+    }
 
     public void removeGrade(Grade grade) {
         getGrades().remove(grade);
@@ -107,7 +112,7 @@ public class Student {
     }
     
     public String toString(){
-        return getName() + " (" + birthDate.toString() + ")";
+        return String.format("[%3d] %15s (%s)", id, name, birthDate.toString());
     }
 
     @Converter(autoApply=true)
